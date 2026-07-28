@@ -53,15 +53,17 @@ export function ProjectGrid({
       <div className="project-grid">
         {visible.map((project) => (
           <article className="project-card" data-category={project.category} key={project.slug}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={project.image}
-              alt={`${project.title} project`}
-              width="2400"
-              height="1350"
-              loading="lazy"
-              decoding="async"
-            />
+            <div className="project-thumb">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={project.image}
+                alt={`${project.title} project`}
+                width="2400"
+                height="1350"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
             <div className="project-meta">
               <span>{categoryLabels[project.category]}</span>
             </div>
