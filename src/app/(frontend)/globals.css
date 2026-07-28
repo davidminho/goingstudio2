@@ -1,0 +1,10 @@
+@import "../../../styles.css";
+
+main {
+  min-height: 60vh;
+}
+
+.cms-note {
+  color: var(--muted);
+  font-size: 12px;
+}
