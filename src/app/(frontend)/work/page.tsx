@@ -7,7 +7,8 @@ export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'Work',
-  description: 'Selected website and CRM platform projects by Going Digital Solutions.',
+  description:
+    'Website development, e-commerce, CRM platform and corporate identity projects by Going Digital Solutions.',
 }
 
 export default async function WorkPage() {
@@ -18,7 +19,7 @@ export default async function WorkPage() {
       <section className="page-hero">
         <div className="shell">
           <p className="eyebrow">Our Portfolio</p>
-          <h1>Featured Projects</h1>
+          <h1>Our Projects</h1>
         </div>
       </section>
       <ProjectGrid projects={projects} showFilters />

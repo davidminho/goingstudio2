@@ -9,7 +9,16 @@ const filters = [
   ['website', 'Website'],
   ['ecommerce', 'E-commerce'],
   ['crm', 'CRM Platform'],
+  ['design', 'Graphic Design & CI'],
 ] as const
+
+const categoryLabels: Record<string, string> = {
+  website: 'Website',
+  ecommerce: 'E-commerce',
+  crm: 'CRM Platform',
+  design: 'Graphic Design & CI',
+  marketing: 'Digital Marketing',
+}
 
 export function ProjectGrid({
   projects,
@@ -45,14 +54,27 @@ export function ProjectGrid({
         {visible.map((project) => (
           <article className="project-card" data-category={project.category} key={project.slug}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={project.image} alt={`${project.title} project`} />
+            <img
+              src={project.image}
+              alt={`${project.title} project`}
+              width="2400"
+              height="1350"
+              loading="lazy"
+              decoding="async"
+            />
             <div className="project-meta">
-              <span>{project.category.replace('ecommerce', 'E-commerce')}</span>
+              <span>{categoryLabels[project.category]}</span>
             </div>
             <h3>{project.title}</h3>
             <p className="desc">{project.description}</p>
             <div className="project-foot">
-              <span>{project.category === 'crm' ? 'CRM Campaign' : 'Digital Experience'}</span>
+              <span>
+                {project.category === 'crm'
+                  ? 'CRM Campaign'
+                  : project.category === 'design'
+                    ? 'Brand Identity'
+                    : 'Digital Experience'}
+              </span>
               <a href={project.externalURL || '/services'}>
                 {project.externalURL ? 'Visit Website →' : 'Our Services →'}
               </a>
