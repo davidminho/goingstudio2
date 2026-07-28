@@ -15,10 +15,15 @@ body {
   margin: 0;
   color: var(--ink);
   background: #fff;
-  font-family: "Google Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Helvetica Neue", Arial, sans-serif;
   font-size: 14px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+h1,
+.section-title {
+  font-family: var(--font-google-sans), "Google Sans", "Helvetica Neue", Arial, sans-serif;
+  font-optical-sizing: auto;
 }
 body.motion-ready { overflow-x: clip; }
 img { display: block; max-width: 100%; }

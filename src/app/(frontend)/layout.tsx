@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Google_Sans_Flex } from 'next/font/google'
 import React from 'react'
 
 import { MotionEffects } from '@/components/going/MotionEffects'
@@ -7,6 +8,15 @@ import { SiteHeader } from '@/components/going/SiteHeader'
 import { getSiteContent } from '@/lib/cms'
 
 import './globals.css'
+
+const googleSans = Google_Sans_Flex({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-google-sans',
+  weight: 'variable',
+  adjustFontFallback: false,
+  fallback: ['Helvetica Neue', 'Arial', 'sans-serif'],
+})
 
 export const metadata: Metadata = {
   title: {
@@ -24,7 +34,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const site = await getSiteContent()
 
   return (
-    <html lang="en">
+    <html className={googleSans.variable} lang="en">
       <body>
         <MotionEffects />
         <SiteHeader />

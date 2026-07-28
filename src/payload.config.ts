@@ -15,6 +15,10 @@ import { getServerSideURL } from './utilities/getURL'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
+const databaseURL = (process.env.DATABASE_URL || process.env.POSTGRES_URL || '').replace(
+  /([?&])sslmode=(prefer|require|verify-ca)(&|$)/,
+  '$1sslmode=verify-full$3',
+)
 
 export default buildConfig({
   admin: {
@@ -49,7 +53,7 @@ export default buildConfig({
   editor: defaultLexical,
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URL || process.env.POSTGRES_URL || '',
+      connectionString: databaseURL,
     },
   }),
   collections: [Services, Projects, Media, Users],
