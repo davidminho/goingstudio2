@@ -19,6 +19,7 @@ const googleSans = Google_Sans_Flex({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'),
   title: {
     default: 'Going Studio — Creative, Strategy, Performance',
     template: '%s — Going Studio',
@@ -34,7 +35,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const site = await getSiteContent()
 
   return (
-    <html className={googleSans.variable} lang="en">
+    <html className={googleSans.variable} data-scroll-behavior="smooth" lang="en">
       <body>
         <MotionEffects />
         <SiteHeader />

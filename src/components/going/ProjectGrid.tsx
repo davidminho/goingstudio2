@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useState } from 'react'
 
 import type { ProjectContent } from '@/lib/cms'
@@ -53,7 +54,11 @@ export function ProjectGrid({
       <div className="project-grid">
         {visible.map((project) => (
           <article className="project-card" data-category={project.category} key={project.slug}>
-            <div className="project-thumb">
+            <Link
+              aria-label={`View ${project.title} project`}
+              className="project-thumb"
+              href={`/work/${project.slug}`}
+            >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={project.image}
@@ -63,11 +68,13 @@ export function ProjectGrid({
                 loading="lazy"
                 decoding="async"
               />
-            </div>
+            </Link>
             <div className="project-meta">
               <span>{categoryLabels[project.category]}</span>
             </div>
-            <h3>{project.title}</h3>
+            <h3>
+              <Link href={`/work/${project.slug}`}>{project.title}</Link>
+            </h3>
             <p className="desc">{project.description}</p>
             <div className="project-foot">
               <span>
@@ -77,9 +84,7 @@ export function ProjectGrid({
                     ? 'Brand Identity'
                     : 'Digital Experience'}
               </span>
-              <a href={project.externalURL || '/services'}>
-                {project.externalURL ? 'Visit Website →' : 'Our Services →'}
-              </a>
+              <Link href={`/work/${project.slug}`}>View Project →</Link>
             </div>
           </article>
         ))}

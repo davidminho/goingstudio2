@@ -90,3 +90,8 @@ export async function getProjects(): Promise<ProjectContent[]> {
     return defaultProjects
   }
 }
+
+export async function getProjectBySlug(slug: string): Promise<ProjectContent | undefined> {
+  const projects = await getProjects()
+  return projects.find((project) => project.slug === slug)
+}
