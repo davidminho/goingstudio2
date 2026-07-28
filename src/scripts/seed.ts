@@ -1,10 +1,12 @@
-import 'dotenv/config'
-
-import config from '@payload-config'
+import { config as loadEnv } from 'dotenv'
 import { getPayload } from 'payload'
 
 import { defaultProjects, defaultServices, defaultSite } from '../content/defaults'
 
+loadEnv({ path: '.env.local' })
+loadEnv()
+
+const { default: config } = await import('@payload-config')
 const payload = await getPayload({ config })
 
 await payload.updateGlobal({
